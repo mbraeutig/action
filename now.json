@@ -4,6 +4,7 @@
     "version": 2,
     "routes": [
       { "src": "/health", "dest": "api/health.go" },
+      { "src": "/index", "dest": "api/index.go" },
       { "src": "/action", "dest": "api/action.go" }
     ]
 }
