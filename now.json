@@ -1,0 +1,9 @@
+
+{
+    "name": "action",
+    "version": 2,
+    "routes": [
+      { "src": "/health", "dest": "api/health.go" },
+      { "src": "/action", "dest": "api/action.go" }
+    ]
+}
