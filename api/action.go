@@ -15,25 +15,31 @@ import (
 const URL = "https://www.actionforhappiness.de/wp-content/uploads/"
 
 func Action(w http.ResponseWriter, r *http.Request) {
-	year, month, day := time.Now().Date()
+	_, month, day := time.Now().Date()
 	// fmt.Println(year, month, day)      // For example 2009 November 10
 	// fmt.Println(year, int(month), day) // For example 2009 11 10
 
-	// "https://www.actionforhappiness.de/wp-content/uploads/2022/12/AFH_ACTION_DE_2022_12_DEZ_09.jpg"
+	// https://www.actionforhappiness.de/wp-content/uploads/2022/01/AFH_ACTION_2022_02-DE.jpg
+
 	var b strings.Builder
 	b.WriteString(URL)
-	b.WriteString(strconv.Itoa(year))
+	b.WriteString("2022")
 	b.WriteString("/")
-	b.WriteString(strconv.Itoa(int(month)))
-	b.WriteString("/AFH_ACTION_DE_")
-	b.WriteString(strconv.Itoa(year))
+	var strMonth = strconv.Itoa(int(month))
+	if int(month) < 10 {
+		b.WriteString("0")
+	}
+	b.WriteString(strMonth)
+	b.WriteString("/AFH_ACTION_")
+	b.WriteString("2022")
 	b.WriteString("_")
-	b.WriteString(strconv.Itoa(int(month)))
-	b.WriteString("_DEZ")
-	b.WriteString("_")
-	b.WriteString(strconv.Itoa(day))
-	b.WriteString(".jpg")
-	// fmt.Print(b.String())
+	var strDay = strconv.Itoa(day)
+	if int(day) < 10 {
+		b.WriteString("0")
+	}
+	b.WriteString(strDay)
+	b.WriteString("-DE.jpg")
+	//fmt.Print(b.String())
 
 	// Just a simple GET request to the image URL
 	// We get back a *Response, and an error
